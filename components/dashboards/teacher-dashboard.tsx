@@ -32,7 +32,7 @@ export default function TeacherDashboard() {
           }`}
         >
           <AlertCircle size={18} />
-          Trauerkasten
+          Kummerkasten
         </button>
       </div>
 
@@ -152,7 +152,7 @@ export default function TeacherDashboard() {
           <li>✓ Alle Daten sind anonymisiert und werden nicht für Benotung einzelner Studierender verwendet</li>
           <li>✓ Analysen dienen der proaktiven Unterstützung und nicht der Überwachung</li>
           <li>✓ Studierende können ihre Daten-Sichtbarkeit kontrollieren</li>
-          <li>✓ Der "Trauerkasten" zeigt Gruppen in Schwierigkeiten zur frühzeitigen Intervention</li>
+          <li>✓ Der "Kummerkasten" zeigt Gruppen in Schwierigkeiten zur frühzeitigen Intervention</li>
         </ul>
       </div>
     </div>

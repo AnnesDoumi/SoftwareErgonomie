@@ -119,7 +119,7 @@ export default function ProblemReportsView() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-2">
           <AlertCircle className="w-8 h-8 text-warning" />
-          <h2 className="text-3xl font-bold text-foreground">Trauerkasten - Problemmeldungen</h2>
+          <h2 className="text-3xl font-bold text-foreground">Kummerkasten - Problemmeldungen</h2>
         </div>
         <p className="text-muted-foreground">
           Automatische Erkennung von Gruppen in Schwierigkeiten. Alle Daten bleiben anonym und unterstützen frühe
@@ -261,7 +261,7 @@ export default function ProblemReportsView() {
 
       {/* Help Section */}
       <div className="mt-8 bg-secondary/5 rounded-lg border border-secondary p-6">
-        <h3 className="font-semibold text-foreground mb-3">Wie funktioniert der Trauerkasten?</h3>
+        <h3 className="font-semibold text-foreground mb-3">Wie funktioniert der Kummerkasten?</h3>
         <ul className="space-y-2 text-sm text-muted-foreground">
           <li>
             <strong className="text-foreground">Automatische Analyse:</strong> Das System erkennt automatisch Muster bei

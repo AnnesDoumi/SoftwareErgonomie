@@ -26,7 +26,7 @@ export default function StudentDashboard() {
             <h3 className="font-semibold text-blue-900 dark:text-blue-200 mb-2">Probleme in der Gruppenarbeit?</h3>
             <p className="text-sm text-blue-800 dark:text-blue-300 mb-3">
               Falls Gruppenmitglieder nicht erreichbar sind oder Kommunikationsprobleme bestehen, nutze den
-              "Trauerkasten" um anonym Probleme zu melden.
+              "Kummerkasten" um anonym Probleme zu melden.
             </p>
             <button
               onClick={() => setShowProblemReport(!showProblemReport)}

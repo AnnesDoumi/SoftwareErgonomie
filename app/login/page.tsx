@@ -5,6 +5,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
+import Image from "next/image"           // ⬅ neu
 
 export default function LoginPage() {
   const router = useRouter()
@@ -23,21 +24,33 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      {/* Main Content */}
-      <div className="flex-1 flex items-center justify-center px-4 py-12">
-        <div className="w-full max-w-md">
-          {/* Header */}
-          <div className="mb-12">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-3 h-3 rounded-full bg-primary"></div>
-              <h1 className="text-3xl font-bold text-foreground">GroupFlow</h1>
+      <div className="min-h-screen bg-background flex flex-col">
+        {/* Main Content */}
+        <div className="flex-1 flex items-center justify-center px-4 py-12">
+          <div className="w-full max-w-md">
+            {/* Header */}
+            <div className="mb-12">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <Image
+                      src="/logo-groupflow-32.png"
+                      alt="GroupFlow Logo"
+                      width={852}
+                      height={244}
+                      className="rounded w-[160px] h-auto"   // ⬅ Größe nur über CSS
+                  />
+                  <span className="sr-only">GroupFlow</span>
+                </div>
+
+
+                {/* Screenreader-Text, visuell versteckt */}
+                <span className="sr-only">GroupFlow</span>
+              </div>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                Transparente Gruppendynamiken für besseres Lernen an der HTW Berlin. Analysieren Sie Ihre Gruppenarbeit,
+                dokumentieren Sie Lernfortschritte und verbessern Sie die Zusammenarbeit.
+              </p>
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Transparente Gruppendynamiken für besseres Lernen an der HTW Berlin. Analysieren Sie Ihre Gruppenarbeit,
-              dokumentieren Sie Lernfortschritte und verbessern Sie die Zusammenarbeit.
-            </p>
-          </div>
 
           {/* Role Selection */}
           <div className="mb-8">

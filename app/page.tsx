@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 import StudentDashboard from "@/components/dashboards/student-dashboard"
 import TeacherDashboard from "@/components/dashboards/teacher-dashboard"
 import { LogOut } from "lucide-react"
+import Image from "next/image"
 
 export default function HomePage() {
   const router = useRouter()
@@ -33,16 +34,24 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="sticky top-0 z-50 bg-card border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-3 h-3 rounded-full bg-primary"></div>
-            <h1 className="text-2xl font-bold text-foreground">
-              {userRole === "student" ? "GroupFlow – Meine Gruppe" : "GroupFlow – Gruppenverwaltung"}
-            </h1>
-          </div>
+      <div className="min-h-screen bg-background">
+        {/* Header */}
+        <div className="sticky top-0 z-50 bg-card border-b border-border">
+          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Image
+                  src="/logo-groupflow-32.png"
+                  alt="GroupFlow Logo"
+                  width={32}
+                  height={32}
+                  className="rounded w-[160px] h-auto"
+              />
+              <h1 className="text-2xl font-bold text-foreground">
+                {userRole === "student"
+                    ? "– Meine Gruppe"
+                    : "– Gruppenverwaltung"}
+              </h1>
+            </div>
 
           <div className="flex gap-3 items-center">
             <div className="flex gap-2 bg-muted rounded-lg p-1">

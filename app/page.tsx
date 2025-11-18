@@ -6,6 +6,7 @@ import StudentDashboard from "@/components/dashboards/student-dashboard"
 import TeacherDashboard from "@/components/dashboards/teacher-dashboard"
 import { LogOut } from "lucide-react"
 import Image from "next/image"
+import { ModeToggle } from "@/components/mode-toggle"
 
 export default function HomePage() {
   const router = useRouter()
@@ -23,6 +24,7 @@ export default function HomePage() {
       router.push("/login")
     }
   }, [searchParams, router])
+
 
   const handleLogout = () => {
     setIsAuthenticated(false)
@@ -76,6 +78,7 @@ export default function HomePage() {
                 Lehrperson
               </button>
             </div>
+            <ModeToggle />   {/* ⬅ Dark-Mode-Schalter */}
             <button
               onClick={handleLogout}
               className="px-4 py-2 rounded-lg bg-muted text-muted-foreground hover:bg-border transition-colors text-sm font-medium flex items-center gap-2"

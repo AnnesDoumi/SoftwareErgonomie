@@ -1,12 +1,49 @@
 "use client"
 
-import { useState } from "react"
+import { useState , useEffect} from "react"
 import StudentGroupCard from "@/components/student/group-card"
 import StudentDetailView from "@/components/student/detail-view"
 
 export default function StudentDashboard() {
   const [selectedGroup, setSelectedGroup] = useState<string | null>(null)
   const [showProblemReport, setShowProblemReport] = useState(false)
+  const [motivation, setMotivation] = useState(70)
+  const [engagement, setEngagement] = useState(70)
+  const [reflection, setReflection] = useState("")
+  const [language, setLanguage] = useState<"de" | "en">("de")
+
+  const handleSubmit = () => {
+    console.log("Motivation:", motivation)
+    console.log("Reflexion:", reflection)
+    alert("Selbsteinschätzung gespeichert!")
+  }
+
+  
+  useEffect(() => {
+    // gespeicherte Sprache laden
+    if (typeof window !== "undefined") {
+      const stored = window.localStorage.getItem("groupflow-language")
+      if (stored === "de" || stored === "en") {
+        setLanguage(stored)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    // html lang setzen + speichern
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = language
+    }
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("groupflow-language", language)
+    }
+  }, [language])
+
+
+  if (selectedGroup) {
+    return <StudentDetailView groupId={selectedGroup} onBack={() => setSelectedGroup(null)} />
+  }
+
 
   if (selectedGroup) {
     return <StudentDetailView groupId={selectedGroup} onBack={() => setSelectedGroup(null)} />
@@ -72,6 +109,76 @@ export default function StudentDashboard() {
         </div>
       </div>
 
+      <div className="mb-8 p-6 bg-card border border-border rounded-xl">
+        <h3 className="text-xl font-bold text-foreground mb-4">
+          Meine Selbsteinschätzung
+        </h3>
+
+        {/* Motivation Slider */}
+        <div className="mb-6">
+          <div className="flex justify-between items-center mb-2">
+            <label className="text-sm font-medium text-foreground">
+              Motivation (0–100%)
+            </label>
+            <span className="text-sm font-semibold text-primary">
+            {motivation}%
+          </span>
+          </div>
+
+          <input
+              type="range"
+              min={0}
+              max={100}
+              value={motivation}
+              onChange={(e) => setMotivation(Number(e.target.value))}
+              className="w-full accent-primary cursor-pointer"
+          />
+        </div>
+
+
+        <div className="mb-6">
+          <div className="flex justify-between items-center mb-2">
+            <label className="text-sm font-medium text-foreground">
+              Engagement (0–100%)
+            </label>
+            <span className="text-sm font-semibold text-primary">
+            {engagement}%
+          </span>
+          </div>
+
+          <input
+              type="range"
+              min={0}
+              max={100}
+              value={engagement}
+              onChange={(e) => setEngagement(Number(e.target.value))}
+              className="w-full accent-primary cursor-pointer"
+          />
+        </div>
+
+        {/* Reflection Textarea */}
+        <div className="mb-6">
+          <label className="text-sm font-medium text-foreground mb-2 block">
+            Reflexion (optional)
+          </label>
+          <textarea
+              value={reflection}
+              onChange={(e) => setReflection(e.target.value)}
+              placeholder="Wie fühle ich mich gerade? Was lief gut? Was würde ich verbessern?"
+              className="w-full p-3 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+              rows={3}
+          />
+        </div>
+
+        {/* Submit Button */}
+        <button
+            onClick={handleSubmit}
+            className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium w-full"
+        >
+          Selbsteinschätzung speichern
+        </button>
+      </div>
+
       <div className="bg-card rounded-xl border border-border p-6 mb-8">
         <h3 className="font-bold text-lg mb-4 text-foreground">Mein Lernfortschritt über Kurse</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -94,6 +201,8 @@ export default function StudentDashboard() {
           ))}
         </div>
       </div>
+
+
 
       {/* Groups Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

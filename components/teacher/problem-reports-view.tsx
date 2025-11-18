@@ -86,9 +86,9 @@ export default function ProblemReportsView() {
       case "high":
         return "bg-destructive/10 border-destructive text-destructive-foreground"
       case "medium":
-        return "bg-warning/10 border-warning text-warning-foreground"
+        return "bg-warning/10 border-sidebar-foreground text-warning-foreground"
       case "low":
-        return "bg-success/10 border-success text-success-foreground"
+        return "bg-success/10 border-sidebar-foreground text-success-foreground"
       default:
         return "bg-muted/10 border-muted text-muted-foreground"
     }
@@ -101,7 +101,7 @@ export default function ProblemReportsView() {
       case "reviewed":
         return "bg-accent/10 text-accent border-accent"
       case "resolved":
-        return "bg-success/10 text-success border-success"
+        return "bg-success/10 text-success border-sidebar-foreground"
       default:
         return "bg-muted/10 text-muted-foreground border-muted"
     }
